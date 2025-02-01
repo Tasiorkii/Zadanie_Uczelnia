@@ -8,14 +8,11 @@ namespace Zadanie_Uczelnia.Program
 {
     internal class Backend
     {
-        
         public static void Wybor()
         {
-           
             var wybor = Convert.ToInt32(Console.ReadLine());
             if (wybor >= 1 && wybor <= 3)
             {
-
                 switch (wybor)
                 {
                     case 1:
@@ -29,16 +26,11 @@ namespace Zadanie_Uczelnia.Program
                         Console.ReadLine();
                         Environment.Exit(0);
                     break;
-
-
                 }
             }
             else
             { Console.WriteLine("Niestety wcisnąłeś zły klawisz"); }
-            
-
         }
-        
         public static void LogIn()
         {
             string mail, pass;
@@ -56,21 +48,16 @@ namespace Zadanie_Uczelnia.Program
                 Console.WriteLine("Błędne hasło lub login");
             }
         }
-       
         public static void SignIn()
         {
             string mail, pass;
             Console.Clear();
-            Console.Write("Podaj e-mail:");
+            Console.WriteLine("Podaj e-mail:");
+            mail = Console.ReadLine();
             Console.Write("Podaj hasło:");
             pass = Console.ReadLine();
             
-            
-            
             Console.WriteLine("Zarejestrowano pomyślnie");
-
         }
-
-
     }
 }
