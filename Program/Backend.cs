@@ -10,24 +10,35 @@ namespace Zadanie_Uczelnia.Program
     {
         public static void Wybor()
         {
-            var wybor = Convert.ToInt32(Console.ReadLine());
-            if (wybor >= 1 && wybor <= 2)
-            {
-                switch (wybor)
+            bool validChoice1 = false;
+            while (!validChoice1)
+                try
                 {
-                    case 1:
-                        LogIn();
-                        break;
-                    case 2:
-                        Environment.Exit(0);
-                        break;
+                    var wybor = Convert.ToInt32(Console.ReadLine());
+                    if (wybor >= 1 && wybor <= 2)
+                    {
+                        switch (wybor)
+                        {
+                            case 1:
+                                LogIn();
+                                validChoice1 = true;
+                                break;
+                            case 2:
+                                Environment.Exit(0);
+                                break;
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("Niestety wcisnąłeś zły klawisz");
+                    }
                 }
-            }
-            else
-            {
-                Console.WriteLine("Niestety wcisnąłeś zły klawisz");
-            }
+                catch (FormatException)
+                {
+                    Console.WriteLine("Błąd: Wprowadź liczbę zamiast tekstu!");
+                }
         }
+
         public static void LogIn()
         {
             string mail, pass;
