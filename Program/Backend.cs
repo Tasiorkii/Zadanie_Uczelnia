@@ -23,7 +23,6 @@ namespace Zadanie_Uczelnia.Program
                     break;
 
                     case 3:
-                        Console.ReadLine();
                         Environment.Exit(0);
                     break;
                 }
