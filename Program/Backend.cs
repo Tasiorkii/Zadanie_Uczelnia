@@ -30,12 +30,12 @@ namespace Zadanie_Uczelnia.Program
                     }
                     else
                     {
-                        Console.WriteLine("Niestety wcisnąłeś zły klawisz");
+                        Console.WriteLine(Frontend.errorReadLineChoice);
                     }
                 }
                 catch (FormatException)
                 {
-                    Console.WriteLine("Błąd: Wprowadź liczbę zamiast tekstu!");
+                    Console.WriteLine(Frontend.errorReadLineChoice);
                 }
         }
 
@@ -53,7 +53,8 @@ namespace Zadanie_Uczelnia.Program
 
                 if (mail == "admin" && pass == "admin")
                 {
-                    Console.WriteLine("Udało ci się zalogować");
+                    Console.WriteLine(Frontend.succesReadLine);
+                    Thread.Sleep(2000);
                     authorization = true;
                 }
                 else

@@ -8,6 +8,8 @@ namespace Zadanie_Uczelnia.Program
 {
     public static class Frontend
     {
+        public static string errorReadLineChoice = "Niepoprawny wybór";
+        public static string succesReadLine = "Operacja wykonana poprawnie";
         public static void PokazEkranPowitalny()
         {
             Console.WriteLine("Bank Łódzki S.A");
@@ -17,7 +19,9 @@ namespace Zadanie_Uczelnia.Program
             Console.WriteLine("1. Logowanie");
             Console.WriteLine("2. Wyjście");
         }
+        public static void OperationsScreen()
+        {
+            Console.WriteLine("Wybierz operację do wykonania:");
+        }
     }
-    
-    
 }
