@@ -8,16 +8,17 @@ namespace Zadanie_Uczelnia.Program
 {
     internal class Backend
     {
+        public bool authorization;
         public static void Choice()
         {
             bool validChoice1 = false;
             while (!validChoice1)
                 try
                 {
-                    var choice = Convert.ToInt32(Console.ReadLine());
-                    if (choice >= 1 && choice <= 2)
+                    var choice1 = Convert.ToInt32(Console.ReadLine());
+                    if (choice1 >= 1 && choice1 <= 2)
                     {
-                        switch (choice)
+                        switch (choice1)
                         {
                             case 1:
                                 LogIn();
@@ -38,7 +39,6 @@ namespace Zadanie_Uczelnia.Program
                     Console.WriteLine(Frontend.errorReadLineChoice);
                 }
         }
-
         public static void LogIn()
         {
             string mail, pass;
@@ -56,10 +56,13 @@ namespace Zadanie_Uczelnia.Program
                     Console.WriteLine(Frontend.succesReadLine);
                     Thread.Sleep(2000);
                     authorization = true;
+                    Console.Clear();
+                    Frontend.OperationsScreen();
+                    var choice2 = Convert.ToInt32(Console.ReadLine());
                 }
                 else
                 {
-                    Console.WriteLine("Błędne hasło lub login");
+                    Console.WriteLine("Błędne hasło lub login, spróbuj wpisać ponownie.");
                     Thread.Sleep(3000); //Sleep aby użytkownik na 3 sekundy zobaczył że niepoprawnie został zalogowany
                 }
             }
