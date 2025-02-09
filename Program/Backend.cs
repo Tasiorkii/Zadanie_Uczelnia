@@ -41,6 +41,7 @@ namespace Zadanie_Uczelnia.Program
         public static void LogIn()
         {
             string mail, pass;
+            int accountID;
             bool authorization = false; //zmienna do weryfikacji czy użytkownik jest prawidłowo zalogowany
             while (!authorization) //pętla, wykonuje się zawsze jeżeli zmienna authorization jest zawsze na false
             {
@@ -50,11 +51,28 @@ namespace Zadanie_Uczelnia.Program
                 Console.Write("Hasło:");
                 pass = Console.ReadLine();
 
-                if (mail == "admin" && pass == "admin")
+                if (mail == "admin1" && pass == "admin1")
                 {
                     Console.WriteLine(Frontend.succesReadLine);
                     Thread.Sleep(2000);
                     authorization = true;
+                    accountID = 1;
+                    AccountOperations();
+                }
+                else if (mail == "admin2" && pass == "admin2")
+                {
+                    Console.WriteLine(Frontend.succesReadLine);
+                    Thread.Sleep(2000);
+                    authorization = true;
+                    accountID = 2;
+                    AccountOperations();
+                }
+                else if (mail == "admin3" && pass == "admin3")
+                {
+                    Console.WriteLine(Frontend.succesReadLine);
+                    Thread.Sleep(2000);
+                    authorization = true;
+                    accountID = 3;
                     AccountOperations();
                 }
                 else
