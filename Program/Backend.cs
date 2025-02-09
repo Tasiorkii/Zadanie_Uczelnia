@@ -8,7 +8,6 @@ namespace Zadanie_Uczelnia.Program
 {
     internal class Backend
     {
-        public bool authorization;
         public static void ChoiceStartup()
         {
             bool validChoice1 = false;
