@@ -22,8 +22,10 @@ namespace Zadanie_Uczelnia.Program
         public static void OperationsScreen()
         {
             Console.WriteLine("Wybierz operację do wykonania:");
-            Console.WriteLine("1. Przelew");
-            Console.WriteLine("2. Wyjście");
+            Console.WriteLine("1. Wykonaj przelew");
+            Console.WriteLine("2. Sprawdź balans swojego rachunku bankowego");
+            Console.WriteLine("3. Wyloguj");
+            Console.WriteLine("4. Wyloguj i zamknij aplikację");
         }
     }
 }

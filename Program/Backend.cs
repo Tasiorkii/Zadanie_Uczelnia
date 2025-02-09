@@ -9,7 +9,7 @@ namespace Zadanie_Uczelnia.Program
     internal class Backend
     {
         public bool authorization;
-        public static void Choice()
+        public static void ChoiceStartup()
         {
             bool validChoice1 = false;
             while (!validChoice1)
@@ -56,9 +56,7 @@ namespace Zadanie_Uczelnia.Program
                     Console.WriteLine(Frontend.succesReadLine);
                     Thread.Sleep(2000);
                     authorization = true;
-                    Console.Clear();
-                    Frontend.OperationsScreen();
-                    var choice2 = Convert.ToInt32(Console.ReadLine());
+                    AccountOperations();
                 }
                 else
                 {
@@ -66,6 +64,51 @@ namespace Zadanie_Uczelnia.Program
                     Thread.Sleep(3000); //Sleep aby użytkownik na 3 sekundy zobaczył że niepoprawnie został zalogowany
                 }
             }
+        }
+        public static void AccountOperations()
+        {
+            bool validChoice2 = false;
+            Console.Clear();
+            Frontend.OperationsScreen();
+            while (!validChoice2)
+                try
+                {
+                    var choice2 = Convert.ToInt32(Console.ReadLine());
+                    if (choice2 >= 1 && choice2 <= 4)
+                    {
+                        switch (choice2)
+                        {
+                            case 1:
+                                //cos tu sie dzieje
+                                break;
+                            case 2:
+                                //cos tu sie dzieje
+                                break;
+                            case 3:
+                                Console.Clear();
+                                Console.WriteLine("Wylogowano poprawnie, przechodzenie do ekranu logowania");
+                                Thread.Sleep(3000);
+                                Console.Clear();
+                                Frontend.PokazEkranPowitalny();
+                                Backend.ChoiceStartup();
+                                break;
+                            case 4:
+                                Console.Clear();
+                                Console.WriteLine("Wylogowano poprawnie, wychodzenie z aplikacji...");
+                                Thread.Sleep(2000);
+                                Environment.Exit(0);
+                                break;
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine(Frontend.errorReadLineChoice);
+                    }
+                }
+                catch (FormatException)
+                {
+                    Console.WriteLine(Frontend.errorReadLineChoice);
+                }
         }
     }
 }
