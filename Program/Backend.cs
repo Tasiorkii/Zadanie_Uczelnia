@@ -8,16 +8,16 @@ namespace Zadanie_Uczelnia.Program
 {
     internal class Backend
     {
-        public static void Wybor()
+        public static void Choice()
         {
             bool validChoice1 = false;
             while (!validChoice1)
                 try
                 {
-                    var wybor = Convert.ToInt32(Console.ReadLine());
-                    if (wybor >= 1 && wybor <= 2)
+                    var choice = Convert.ToInt32(Console.ReadLine());
+                    if (choice >= 1 && choice <= 2)
                     {
-                        switch (wybor)
+                        switch (choice)
                         {
                             case 1:
                                 LogIn();
