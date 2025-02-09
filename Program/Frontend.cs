@@ -10,7 +10,7 @@ namespace Zadanie_Uczelnia.Program
     {
         public static string errorReadLineChoice = "Niepoprawny wybór, spróbuj ponownie";
         public static string succesReadLine = "Operacja wykonana poprawnie";
-        public static void PokazEkranPowitalny()
+        public static void StartupScreen()
         {
             Console.WriteLine("Bank Łódzki S.A");
             Console.WriteLine("Dzień dobry, zaloguj się");

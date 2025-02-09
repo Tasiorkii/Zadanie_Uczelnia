@@ -88,7 +88,7 @@ namespace Zadanie_Uczelnia.Program
                                 Console.WriteLine("Wylogowano poprawnie, przechodzenie do ekranu logowania");
                                 Thread.Sleep(3000);
                                 Console.Clear();
-                                Frontend.PokazEkranPowitalny();
+                                Frontend.StartupScreen();
                                 Backend.ChoiceStartup();
                                 break;
                             case 4:
