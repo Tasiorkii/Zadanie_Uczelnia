@@ -10,32 +10,40 @@ namespace Zadanie_Uczelnia.Program
     {
         public static void Wybor()
         {
-            var wybor = Convert.ToInt32(Console.ReadLine());
-            if (wybor >= 1 && wybor <= 3)
-            {
-                switch (wybor)
+            bool validChoice1 = false;
+            while (!validChoice1)
+                try
                 {
-                    case 1:
-                        LogIn();
-                    break;
-                    case 2:
-                        SignIn();   
-                    break;
-
-                    case 3:
-                        Environment.Exit(0);
-                    break;
+                    var wybor = Convert.ToInt32(Console.ReadLine());
+                    if (wybor >= 1 && wybor <= 2)
+                    {
+                        switch (wybor)
+                        {
+                            case 1:
+                                LogIn();
+                                validChoice1 = true;
+                                break;
+                            case 2:
+                                Environment.Exit(0);
+                                break;
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("Niestety wcisnąłeś zły klawisz");
+                    }
                 }
-            }
-            else
-            { Console.WriteLine("Niestety wcisnąłeś zły klawisz"); }
+                catch (FormatException)
+                {
+                    Console.WriteLine("Błąd: Wprowadź liczbę zamiast tekstu!");
+                }
         }
 
         public static void LogIn()
         {
             string mail, pass;
-            bool authorization = false;//zmienna do weryfikacji czy użytkownik jest prawidłowo zalogowany
-            while (!authorization)//pętla, wykonuje się zawsze jeżeli zmienna authorization jest zawsze na false
+            bool authorization = false; //zmienna do weryfikacji czy użytkownik jest prawidłowo zalogowany
+            while (!authorization) //pętla, wykonuje się zawsze jeżeli zmienna authorization jest zawsze na false
             {
                 Console.Clear();
                 Console.Write("Login:");
@@ -51,21 +59,9 @@ namespace Zadanie_Uczelnia.Program
                 else
                 {
                     Console.WriteLine("Błędne hasło lub login");
-                    Thread.Sleep(3000);//Sleep aby użytkownik na 3 sekundy zobaczył że niepoprawnie został zalogowany
+                    Thread.Sleep(3000); //Sleep aby użytkownik na 3 sekundy zobaczył że niepoprawnie został zalogowany
                 }
             }
-        }
-
-        public static void SignIn()
-        {
-            string mail, pass;
-            Console.Clear();
-            Console.WriteLine("Podaj e-mail:");
-            mail = Console.ReadLine();
-            Console.Write("Podaj hasło:");
-            pass = Console.ReadLine();
-            
-            Console.WriteLine("Zarejestrowano pomyślnie");
         }
     }
 }
