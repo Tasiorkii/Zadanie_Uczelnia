@@ -1,6 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.ComponentModel.Design;
+using System.IO.Pipes;
 using System.Linq;
+using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -8,7 +12,9 @@ namespace Zadanie_Uczelnia.Program
 {
     internal class Backend
     {
-        public static void ChoiceStartup()
+        public List<Customers>? Client { get; set; }
+
+        public void ChoiceStartup()
         {
             bool validChoice1 = false;
             while (!validChoice1)
@@ -38,10 +44,13 @@ namespace Zadanie_Uczelnia.Program
                     Console.WriteLine(Frontend.errorReadLineChoice);
                 }
         }
-        public static void LogIn()
+
+        int accountID;
+        string mail, pass;
+
+        public void LogIn()
         {
-            string mail, pass;
-            int accountID;
+
             bool authorization = false; //zmienna do weryfikacji czy użytkownik jest prawidłowo zalogowany
             while (!authorization) //pętla, wykonuje się zawsze jeżeli zmienna authorization jest zawsze na false
             {
@@ -51,12 +60,14 @@ namespace Zadanie_Uczelnia.Program
                 Console.Write("Hasło:");
                 pass = Console.ReadLine();
 
+
                 if (mail == "admin1" && pass == "admin1")
                 {
                     Console.WriteLine(Frontend.succesReadLine);
                     Thread.Sleep(2000);
                     authorization = true;
                     accountID = 1;
+
                     AccountOperations();
                 }
                 else if (mail == "admin2" && pass == "admin2")
@@ -82,11 +93,12 @@ namespace Zadanie_Uczelnia.Program
                 }
             }
         }
-        public static void AccountOperations()
+        public void AccountOperations()
         {
             bool validChoice2 = false;
             Console.Clear();
             Frontend.OperationsScreen();
+
             while (!validChoice2)
                 try
                 {
@@ -107,7 +119,7 @@ namespace Zadanie_Uczelnia.Program
                                 Thread.Sleep(3000);
                                 Console.Clear();
                                 Frontend.StartupScreen();
-                                Backend.ChoiceStartup();
+                                ChoiceStartup();
                                 break;
                             case 4:
                                 Console.Clear();
@@ -127,5 +139,43 @@ namespace Zadanie_Uczelnia.Program
                     Console.WriteLine(Frontend.errorReadLineChoice);
                 }
         }
+
+
+        public void addClients()
+        {
+            //dodanie sztywnej "bazy" klientów
+            Client = new List<Customers>();
+
+            //klient 1
+            Customers c1 = new Customers();
+            c1.Id = 1;
+            c1.Name = "Jan";
+            c1.LastName = "Kowalski";
+            c1.Balance = "2000";
+            c1.Login = "admin1";
+            c1.Password = "admin1";
+
+            //klient 2
+            Customers c2 = new Customers();
+            c2.Id = 2;
+            c2.Name = "Piotr";
+            c2.LastName = "Nowak";
+            c2.Balance = "3500";
+            c2.Login = "admin2";
+            c2.Password = "admin2";
+
+            //klient 3
+            Customers c3 = new Customers();
+            c3.Id = 3;
+            c3.Name = "Krzysztof";
+            c3.LastName = "Pełka";
+            c3.Balance = "12000";
+            c3.Login = "admin3";
+            c3.Password = "admin3";
+
+        }
+
+        public void showBalance()
+        {
     }
 }
