@@ -93,6 +93,7 @@ namespace Zadanie_Uczelnia.Program
                 }
             }
         }
+
         public void AccountOperations()
         {
             bool validChoice2 = false;
@@ -177,5 +178,6 @@ namespace Zadanie_Uczelnia.Program
 
         public void showBalance()
         {
+        }
     }
 }
