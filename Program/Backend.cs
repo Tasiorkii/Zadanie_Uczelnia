@@ -97,22 +97,26 @@ namespace Zadanie_Uczelnia.Program
         public void AccountOperations()
         {
             bool validChoice2 = false;
-            Console.Clear();
-            Frontend.OperationsScreen();
-
             while (!validChoice2)
                 try
                 {
+                    Console.Clear();
+                    Frontend.OperationsScreen();
                     var choice2 = Convert.ToInt32(Console.ReadLine());
                     if (choice2 >= 1 && choice2 <= 4)
                     {
                         switch (choice2)
                         {
                             case 1:
-                                //cos tu sie dzieje
+                                Console.WriteLine("Podaj numer konta na który chcesz wykonać przelew:");
                                 break;
                             case 2:
-                                //cos tu sie dzieje
+                                Console.Clear();
+                                Console.WriteLine("Twój stan konta wynosi: " /*+ balance*/);
+                                Console.ForegroundColor = ConsoleColor.Red;
+                                Console.WriteLine("Wciśnij dowolny klawisz aby wrócić do poprzedniego ekranu.");
+                                Console.ResetColor();
+                                Console.ReadLine();
                                 break;
                             case 3:
                                 Console.Clear();
