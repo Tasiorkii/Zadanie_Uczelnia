@@ -8,8 +8,6 @@ namespace Zadanie_Uczelnia.Program
 {
     public static class Frontend
     {
-        public static string errorReadLineChoice = "Niepoprawny wybór, spróbuj ponownie";
-        public static string succesReadLine = "Operacja wykonana poprawnie";
         public static void StartupScreen()
         {
             Console.ForegroundColor = ConsoleColor.Yellow;
