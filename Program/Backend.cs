@@ -54,23 +54,33 @@ namespace Zadanie_Uczelnia.Program
             while (!authorization)
             {
                 Console.Clear();
+                Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.Write("Login: ");
+                Console.ResetColor();
                 string mail = Console.ReadLine();
+                Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.Write("Hasło: ");
+                Console.ResetColor();
                 string pass = Console.ReadLine();
 
                 var user = Clients.FirstOrDefault(c => c.Login == mail && c.Password == pass);
 
                 if (user != null)
                 {
+                    Console.Clear();
+                    Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine("Zalogowano pomyślnie.");
+                    Console.ResetColor();
                     Thread.Sleep(2000);
                     authorization = true;
                     AccountOperations(user);
                 }
                 else
                 {
+                    Console.Clear();
+                    Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("Błędne dane logowania. Spróbuj ponownie.");
+                    Console.ResetColor();
                     Thread.Sleep(2000);
                 }
             }
@@ -81,24 +91,41 @@ namespace Zadanie_Uczelnia.Program
     while (running)
     {
         Console.Clear();
-        Console.WriteLine($"Numer konta: {user.AccountNumber}");
+        Console.ForegroundColor = ConsoleColor.Yellow;
+        Console.Write("Numer Twojego konta: ");
+        Console.ForegroundColor = ConsoleColor.Cyan;
+        Console.WriteLine(user.AccountNumber);
+        Console.ResetColor();
         Frontend.OperationsScreen();
         int choice;
         if (!int.TryParse(Console.ReadLine(), out choice))
         {
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("Błąd: Podaj liczbę.");
+            Console.ResetColor();
+            Thread.Sleep(2000);
             continue;
         }
         switch (choice)
         {
             case 1:
-                Console.WriteLine("Podaj numer konta odbiorcy:");
+                Console.Clear();
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine("Podaj numer konta odbiorcy do którego chcesz wykonać przelew:");
+                Console.ResetColor();
                 string recipientAccount = Console.ReadLine();
+                Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.WriteLine("Podaj kwotę przelewu:");
+                Console.ResetColor();
                 decimal amount;
                 if (!decimal.TryParse(Console.ReadLine(), out amount))
                 {
+                    Console.Clear();
+                    Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("Błąd: Niepoprawna kwota.");
+                    Console.ResetColor();
+                    Thread.Sleep(2000);
                     break;
                 }
                 MakeTransfer(user, recipientAccount, amount);
@@ -106,15 +133,18 @@ namespace Zadanie_Uczelnia.Program
                 break;
             case 2:
                 Console.Clear();
-                Console.WriteLine($"Twój stan konta wynosi: {user.Balance} zł");
-                Console.ForegroundColor = ConsoleColor.Red;
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.Write("Twój stan konta wynosi: ");
+                Console.ForegroundColor = ConsoleColor.Cyan;
+                Console.WriteLine(user.Balance);
+                Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.WriteLine("Wciśnij dowolny klawisz, aby wrócić.");
                 Console.ResetColor();
                 Console.ReadLine();
                 break;
             case 3:
                 Console.Clear();
-                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine("Wylogowano poprawnie, przechodzenie do ekranu logowania");
                 Console.ResetColor();
                 Thread.Sleep(3000);
@@ -124,12 +154,16 @@ namespace Zadanie_Uczelnia.Program
                 break;
             case 4:
                 Console.Clear();
+                Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine("Wylogowano poprawnie, wychodzenie z aplikacji...");
+                Console.ResetColor();
                 Thread.Sleep(2000);
                 Environment.Exit(0);
                 break;
             default:
+                Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("Niepoprawny wybór.");
+                Console.ResetColor();
                 break;
         }
     }
@@ -139,17 +173,23 @@ namespace Zadanie_Uczelnia.Program
             var recipient = Clients.FirstOrDefault(c => c.AccountNumber == recipientAccount);
             if (recipient == null)
             {
+                Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("Błąd: Odbiorca nie istnieje.");
+                Console.ResetColor();
                 return;
             }
             if (amount <= 0)
             {
+                Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("Błąd: Kwota musi być większa niż 0.");
+                Console.ResetColor();
                 return;
             }
             if (sender.Balance < amount)
             {
+                Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("Błąd: Brak wystarczających środków.");
+                Console.ResetColor();
                 return;
             }
             sender.Balance -= amount;
