@@ -2,7 +2,7 @@ Aplikacja bankowa typu konsolowego napisana w C# jako projekt na studia o kierun
 
 Numery albumów:
 
-- Dominik Tasior:
+- Dominik Tasior: 122718
 - Kuba Witkowski: 106263
 
 Grupa: IV
